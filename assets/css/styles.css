@@ -94,7 +94,13 @@
 }
 
 .main-content-inner {
-    padding: 0 30px 50px;
+    /* margin: auto; */
+    padding: 50px 250px;
+}
+
+.visaCounsellor-content-inner {
+    /* margin: auto; */
+    padding: 50px 150px;
 }
 
 
@@ -755,6 +761,21 @@ ul.breadcrumbs {
     border-radius: 50%;
     margin-right: 12px;
     margin-left: 20px;
+}
+
+.dashboard img.avatar {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-left: 20px;
+}
+
+.dashboard h5 {
+    color: grey;
+    font-weight: normal;
+    /* padding-left: 20px;
+    padding-right: 20px; */
 }
 
 .user-name {
@@ -1887,12 +1908,24 @@ table.dbkit-table tr td {
     margin-bottom: 10px;
 }
 
+.card-body .title {
+    font-size: 28px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
 .card-bordered {
     border: 1px solid rgba(0, 0, 0, .125);
 }
 
 p.card-text {
-    margin-bottom: 23px;
+    font-weight: bold;
+    line-height: 20px;
+}
+
+.modal-body .card-text {
+    font-weight: normal;
+    line-height: 21px!important;
 }
 
 
@@ -2899,6 +2932,73 @@ table.dataTable thead td {
 .s-sw-title h5 {
     font-size: 16px;
     color: #555;
+}
+
+
+/*`------------------- Dashboard ---------------------------- */
+
+.dashboard-item {
+    padding: 5px 60px 5px 60px;
+    border-radius: 10px;
+}
+
+.dashboard-item i {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.dashboard-item p {
+    color: white;
+    font-size: 18px;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 700px!important;
+    }
+}
+
+.modal-dialog {
+    pointer-events: all!important;
+}
+
+.modal-content {
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+}
+
+.effect8 {
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect8:before,
+.effect8:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.effect8:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
 }
 
 

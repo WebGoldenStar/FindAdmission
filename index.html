@@ -36,7 +36,6 @@
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
     <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/metisMenu.min.js"></script>
     <script src="assets/js/jquery.slimscroll.min.js"></script>
@@ -49,40 +48,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.5.0/angular-route-segment.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
     <script src="scripts/main.js"></script>
-    <script>
-        var app = angular.module("myApp", ["ngRoute", 'route-segment', 'view-segment']);
-        var WSURL = "https://api.findadmission.com/";
-        app.config(function($routeSegmentProvider) {
-            $routeSegmentProvider.
-            when('/', 'home').
-            when('/home', 'home').
-            when('/home/login', 'home.login').
-            when('/home/register', 'home.register').
-
-            when('/admin', 'admin');
-
-            $routeSegmentProvider.segment('home', {
-                default: true,
-                templateUrl: 'home.html',
-            });
-            $routeSegmentProvider.within('home').segment('login', {
-                default: true,
-                templateUrl: 'views/auth/login.html'
-            });
-            $routeSegmentProvider.within('home').segment('register', {
-                templateUrl: 'views/auth/register.html'
-            });
-            $routeSegmentProvider.segment('admin', {
-                templateUrl: 'admin.html',
-            });
-
-
-        });
-    </script>
+    <script src="scripts/app.js"></script>
     <script src="scripts/controllers/navController.js"></script>
     <script src="scripts/controllers/registerController.js"></script>
     <script src="scripts/controllers/loginController.js"></script>
+    <script src="scripts/controllers/adminController.js"></script>
+    <script src="scripts/controllers/dashboardController.js"></script>
 </body>
 
 </html>

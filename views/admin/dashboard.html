@@ -1,0 +1,103 @@
+<div class="main-content-inner">
+    <div style="background-color:white;padding:15px 0px">
+        <div class="dashboard media" style="padding: 0px;">
+            <img class="avatar user-thumb" src="assets/images/author/img_avatar.png" width="200px" alt="avatar">
+            <div class="media-body">
+                <h6>Good Morning, {{user.fname + " " + user.lname}}</h6>
+                <h5>{{user.fname + " " + user.lname}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex mt-4">
+        <div class="w-50">
+            <div class="d-flex mb-1">
+                <div class="text-center w-50 mr-1 dashboard-item" style="background-color: #384655;">
+                    <i class="fa fa-rss"></i>
+                    <p>Add Student</p>
+                </div>
+                <div class="text-center w-50 dashboard-item" style="background-color: #9a6500;">
+                    <i class="fa fa-file-text-o"></i>
+                    <p>Partner Institution</p>
+                </div>
+            </div>
+            <div class="d-flex mb-1">
+                <div class="text-center w-50 mr-1 dashboard-item" style="background-color: #33cc00;">
+                    <i class="fa fa-calendar"></i>
+                    <p>My Account</p>
+                </div>
+                <div class="text-center w-50 dashboard-item" style="background-color: #9a65ff;">
+                    <i class="fa fa-search"></i>
+                    <p>My Application</p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="text-center w-50 mr-1 dashboard-item" style="background-color: #656565;">
+                    <i class="fa fa-search"></i>
+                    <p>My Office</p>
+                </div>
+                <div class="text-center w-50 dashboard-item" ng-click="open_introduction_step1();" style="background-color: #653365;">
+                    <i class="fa fa-search"></i>
+                    <p>Visa Counsellor</p>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade show" ng-show="introduction_step1" style="display: block;padding: 17px;" id="introduction_step1">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="col-lg-12 col-md-6 mt-5">
+                            <div class="card card-bordered">
+                                <div class="effect8" style="padding: 10px;margin-left: 25px;margin-right: 25px;border-width: 2px;border-color: grey;border-style: solid;">
+                                    <img class="card-img-top img-fluid" src="assets/images/card/visa_counsellor_dashboard.jpg" alt="image">
+                                </div>
+                                <div class="card-body">
+                                    <h3 class="title text-center">Become Findadmission Visa Counsellor</h3>
+                                    <p class="card-text">Hi {{user.fname}}</p>
+                                    <p class="card-text">Findadmission uses third parties to provide its students visas counselling services.</p>
+                                    <p class="card-text">As an affiliate, after a successful sutdent placement or based on your references, you can be accepted as our official Visa counsellors. With this status we will send students requiring Visas to you and pay you to assisting
+                                        them. </p>
+                                    <br>
+                                    <p class="card-text">To get started, all you need to do is fill out a profile. Bear in mind that your profile is what student would see before choosing you as their Visa Counsellor</p>
+                                    <br>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a ng-click="open_introduction_step1();" style="color: green;cursor: pointer;">Not for me</a>
+                                        <a class="btn btn-success" ng-click="open_introduction_step2();" style="padding-left: 50px!important;padding-right: 50px!important;font-size: 17px;color:white">Continue</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade show" ng-show="introduction_step2" style="display: block;padding: 17px;" id="introduction_step1">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Fill out your profile to apply</h5>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Here's how it works</h4>
+                                <br>
+                                <div style="padding-right: 40px;padding-left: 40px;">
+                                    <p class="card-text">1. Fill out your profile completely and accurately.</p>
+                                    <p class="card-text">2. If you haven't successfully enrolled student in any of the Findadmission partners, submit two references of institutions you have recruited to.</p>
+                                    <p class="card-text">3. We will approve your profile on the platform.</p>
+                                    <p class="card-text">4. Student will be able to review your profile and book your services.</p>
+                                    <p class="card-text">5. A unique Code is sent to student which they have to provide to you in order to make a claim.</p>
+                                    <br>
+                                    <p class="card-text">Good luck and thanks for applying to become Findadmission Visa counsellor</p>
+                                </div>
+                                <br>
+                                <div class="text-center">
+                                    <a class="btn btn-success" href="#!admin/visa_counsellor" style="padding-left: 50px!important;padding-right: 50px!important;font-size: 17px;color:white">Start My Profile</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-50"></div>
+    </div>
+</div>
+<div class="modal-backdrop fade show" ng-show="introduction_step1" ng-click="open_introduction_step1();"></div>
+<div class="modal-backdrop fade show" ng-show="introduction_step2" ng-click="open_introduction_step1();"></div>

@@ -57,7 +57,6 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
         return parseInt(score);
     }
     $scope.signup = function() {
-        alert("123");
         $scope.showsignuperr = false;
 
         if ($scope.signuptype == "parent") {
