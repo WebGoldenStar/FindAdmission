@@ -1,4 +1,5 @@
-app.controller('registerController', ["$scope", "$http", "$location", "$interval", "$routeParams", function($scope, $http, $location, $timeout, $routeParams) {
+'use strict';
+app.controller('registerController', ["$scope", "$http", "$location", "$interval", "$routeParams", "$q", function($scope, $http, $location, $timeout, $routeParams, $q) {
     $scope.countrylist = [];
     $scope.countryids = [];
     $scope.dialingcodes = [];
@@ -8,13 +9,13 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
 
     // $scope.wadialingcode = "";
     // $scope.waphonenum = "";
-    console.log(WSURL + 'partnerapi/api/type/login/page/appcheck');
+    // console.log(WSURL + 'partnerapi/api/type/login/page/appcheck');
     $scope.checkapp = function() {
         $http.post(WSURL + 'partnerapi/api/type/login/page/appcheck').then(function(response) {
             $scope.monthlist = response.month;
             $scope.yearlist = response.year;
             $scope.daylist = response.day;
-            console.log(response);
+            // console.log(response);
             $scope.countrylist = response.data.country;
             $scope.countryids = response.countryids;
             $scope.dialingcodes = response.dialingcodes;
@@ -56,6 +57,7 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
         return parseInt(score);
     }
     $scope.signup = function() {
+        alert("123");
         $scope.showsignuperr = false;
 
         if ($scope.signuptype == "parent") {
@@ -121,29 +123,36 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
         }
 
         if (!$scope.showsignuperr) {
-            var data = $.param({
-                'email': $scope.loginemail,
-                'fname': $scope.firstname,
-                'lname': $scope.lastname,
-                'uniquecode': $scope.uniquecode,
-                'country': $scope.countryid,
-                'dialingcode': $scope.dialingcode,
-                'gender': $scope.gender,
-                'phone': $scope.phonenum,
-                'wadialingcode': $scope.wadialingcode,
-                'waphone': $scope.waphonenum,
-                'password': $scope.signuppass,
-                'vpass': $scope.signupvpass,
-                'companyname': $scope.vcompanyname,
-            });
+
             var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 }
             }
-            alert(data);
-        }
+            var post_data = {
+                'email': $scope.loginemail,
+                'fname': $scope.firstname,
+                'lname': $scope.lastname,
+                'country': $scope.countryid,
+                'dialingcode': $scope.dialingcode,
+                'gender': $scope.gender,
+                'phone': $scope.phonenum,
+                'wadialingcode': $scope.wadialingcode,
+                'waphone': $scope.waphone,
+                'password': $scope.signuppass,
+                'vpass': $scope.signupvpass,
+                'companyname': $scope.vcompanyname,
+            };
+            console.log("Post Data: ", post_data);
+            $http.post(BASE_URL + '/api/register', post_data).then(function(response) {
+                if (response.status == "success") {
+                    alert(response);
+                }
 
+
+            })
+
+        }
     }
 
 }]);

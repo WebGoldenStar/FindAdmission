@@ -1,14 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - srtdash</title>
+    <title>Findadmision Affiliate</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/all.css">
+
+
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -22,43 +24,14 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!-- <script src="assets/js/all.min.js"></script> -->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 
 <body ng-app="myApp">
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    <!-- login area start -->
-    <div class="login-area login-s2">
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarTogglerDemo01">
-                <img src="assets/images/icon/logo3.png" width="200">
 
-                <ul class="navbar-nav" ng-controller="navController">
-                    <li class="nav-item">
-                        <a class="nav-link" ng-class="{active: isActive('/login')}" href="#!login">Login <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ng-class="{active: isActive('/register')}" href="#!register">Register</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-            <ng-view></ng-view>
-        </div>
-    </div>
-    <!-- login area end -->
-
+    <div app-view-segment="0"></div>
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <!-- bootstrap 4 js -->
@@ -71,29 +44,45 @@
 
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/scripts.js"></script>
 
+    <script src="assets/js/scripts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-route-segment/1.5.0/angular-route-segment.min.js"></script>
+    <script src="scripts/main.js"></script>
     <script>
-        var app = angular.module("myApp", ["ngRoute"]);
+        var app = angular.module("myApp", ["ngRoute", 'route-segment', 'view-segment']);
         var WSURL = "https://api.findadmission.com/";
-        app.config(function($routeProvider) {
-            $routeProvider
-                .when("/", {
-                    templateUrl: 'views/auth/login.html'
-                })
-                .when("/login", {
-                    templateUrl: 'views/auth/login.html'
-                })
-                .when("/register", {
-                    templateUrl: 'views/auth/register.html'
-                })
+        app.config(function($routeSegmentProvider) {
+            $routeSegmentProvider.
+            when('/', 'home').
+            when('/home', 'home').
+            when('/home/login', 'home.login').
+            when('/home/register', 'home.register').
+
+            when('/admin', 'admin');
+
+            $routeSegmentProvider.segment('home', {
+                default: true,
+                templateUrl: 'home.html',
+            });
+            $routeSegmentProvider.within('home').segment('login', {
+                default: true,
+                templateUrl: 'views/auth/login.html'
+            });
+            $routeSegmentProvider.within('home').segment('register', {
+                templateUrl: 'views/auth/register.html'
+            });
+            $routeSegmentProvider.segment('admin', {
+                templateUrl: 'admin.html',
+            });
+
 
         });
     </script>
     <script src="scripts/controllers/navController.js"></script>
     <script src="scripts/controllers/registerController.js"></script>
+    <script src="scripts/controllers/loginController.js"></script>
 </body>
 
 </html>
