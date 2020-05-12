@@ -33,5 +33,6 @@ app.config(function($routeSegmentProvider) {
     });
     $routeSegmentProvider.within('admin').segment('visa_counsellor', {
         templateUrl: 'views/admin/visa_counsellor.html',
+        controller: 'visaCounsellorController'
     });
 });

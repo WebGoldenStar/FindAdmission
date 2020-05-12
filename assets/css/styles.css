@@ -1711,12 +1711,13 @@ table.dbkit-table tr td {
 
 .according .card-header a {
     display: block;
-    background: #EFF3F6;
-    padding: 16px 15px;
+    background: grey;
+    padding: 4px 15px;
     border-radius: 3px;
-    color: #444;
+    color: black;
+    font-weight: 700;
     letter-spacing: 0;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
 }
 
@@ -1878,8 +1879,19 @@ table.dbkit-table tr td {
 
 .nav-pills .nav-link {
     padding: 16px 48px;
-    padding: 1rem 3rem;
+    padding: 0.5rem 0.5rem;
     line-height: 19px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 0px;
+}
+
+.nav-pills .nav-link.active {
+    background-color: white;
+    color: black;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-left-color: #00e400;
 }
 
 
@@ -2999,6 +3011,32 @@ table.dataTable thead td {
     -ms-transform: skew(8deg) rotate(3deg);
     -o-transform: skew(8deg) rotate(3deg);
     transform: skew(8deg) rotate(3deg);
+}
+
+.visa-container {
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+
+.visa-header {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+    background-color: lightgray;
+}
+
+.visa-body {
+    padding: 20px;
+}
+
+.visa-body h5 {
+    font-weight: 700;
+}
+
+.visa-header h3 {
+    font-weight: 600;
 }
 
 

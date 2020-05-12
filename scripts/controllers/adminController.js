@@ -3,5 +3,8 @@ app.controller('adminController', ['$scope', '$location', function($scope, $loca
     if (!token) {
         $location.path('home');
     }
+    $scope.isActive = function(destination) {
+        return destination === $location.path();
+    }
 
 }]);

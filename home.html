@@ -13,10 +13,10 @@
 
             <ul class="navbar-nav" ng-controller="navController">
                 <li class="nav-item">
-                    <a class="nav-link" ng-class="{active: $routeSegment.startsWith('home')}" href="#!home/login">Login <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" ng-class="{active: isActive('/home/login')}" href="#!home/login">Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" ng-class="{active: $routeSegment.startsWith('home')}" href="#!home/register">Register</a>
+                    <a class="nav-link" ng-class="{active: isActive('/home/register')}" href="#!home/register">Register</a>
                 </li>
 
             </ul>

@@ -1,18 +1,29 @@
-<div class="visaCounsellor-content-inner">
-    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+<div class="visaCounsellor-content-inner row">
+    <div class="col-3">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link" ng-class="{active:isActive('step1')}" id="expertise-tab" aria-selected="true">Expertise</a>
+            <a class="nav-link" ng-class="{active:isActive('step2')}" id="training-tab" aria-selected="false">Training</a>
+            <a class="nav-link" ng-class="{active:isActive('step3')}" id="languages-tab" aria-selected="false">Languages</a>
+            <a class="nav-link" ng-class="{active:isActive('step4')}" id="fees-tab" aria-selected="false">Fees & Rates</a>
+            <a class="nav-link" ng-class="{active:isActive('step5')}" id="title-tab" aria-selected="false">Title & Overview</a>
+            <a class="nav-link" ng-class="{active:isActive('step6')}" id="profile-tab" aria-selected="false">Profile Photo</a>
+            <a class="nav-link" ng-class="{active:isActive('step7')}" id="location-tab" aria-selected="false">Your Location</a>
+            <a class="nav-link" ng-class="{active:isActive('step8')}" id="phone-tab" aria-selected="false">Phone</a>
+
+        </div>
     </div>
-    <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="expertise" role="tabpanel">Expertise</div>
-        <div class="tab-pane fade" id="training" role="tabpanel">Training</div>
-        <div class="tab-pane fade" id="languages" role="tabpanel">Languages</div>
-        <div class="tab-pane fade" id="fees" role="tabpanel">Fees & Rates</div>
-        <div class="tab-pane fade" id="title" role="tabpanel">Title & Overflow</div>
-        <div class="tab-pane fade" id="profilePhoto" role="tabpanel">Profile Photo</div>
-        <div class="tab-pane fade" id="yourLocation" role="tabpanel">Your Location</div>
-        <div class="tab-pane fade" id="phone" role="tabpanel">Phone</div>
+    <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade" ng-class="{active:isActive('step1'),show:isActive('step1')}" id="expertise" role="tabpanel">
+                <div ng-include="'views/admin/visa_counsellor/expertise.html'"></div>
+            </div>
+            <div class="tab-pane fade" id="training" role="tabpanel">Training</div>
+            <div class="tab-pane fade" id="languages" role="tabpanel">Languages</div>
+            <div class="tab-pane fade" id="fees" role="tabpanel">Fees & Rates</div>
+            <div class="tab-pane fade" id="title" role="tabpanel">Title & Overflow</div>
+            <div class="tab-pane fade" id="profilePhoto" role="tabpanel">Profile Photo</div>
+            <div class="tab-pane fade" id="yourLocation" role="tabpanel">Your Location</div>
+            <div class="tab-pane fade" id="phone" role="tabpanel">Phone</div>
+        </div>
     </div>
 </div>
