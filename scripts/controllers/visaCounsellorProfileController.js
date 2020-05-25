@@ -6,9 +6,9 @@ app.controller('visaCounsellorProfileController', ['$scope', '$location', '$http
     user.lname = readCookie("lname");
     $scope.user = user;
     $scope.CurrentDate = new Date();
-    $http.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    $http.get(BASE_URL + "/api/user").then(response => {
+    $http.get(BASE_URL + "/api/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
         $scope.specialiseCountries = JSON.parse(response.data.user.specialise_countries);
         $scope.experienceLevel = response.data.user.countries_level;
         $scope.trainingFrom = Number(response.data.user.training_from);
@@ -19,7 +19,7 @@ app.controller('visaCounsellorProfileController', ['$scope', '$location', '$http
         $scope.speakLanguages = JSON.parse(response.data.user.speak_languages);
         $scope.profileTitle = response.data.user.profile_title;
         $scope.profileOverview = response.data.user.profile_overview;
-        var profile__image = BASE_URL + "/public/" + response.data.user.profile_image;
+        var profile__image = BASE_URL + "/public" + response.data.user.profile_image;
         $scope.profileImage = profile__image;
         $scope.previewImage = profile__image;
         $scope.phoneVerificationNumber = response.data.user.phone_verification_number;

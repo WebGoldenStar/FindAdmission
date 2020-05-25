@@ -1,5 +1,5 @@
 var degree;
-var BASE_URL = "http://ya1.info/findadmission/FindAdmission-Backend"
+var BASE_URL = "http://127.0.0.1:8000"
 
 function createCookie(name, value, days) {
     var expires;

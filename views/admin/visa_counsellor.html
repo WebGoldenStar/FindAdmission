@@ -1,5 +1,5 @@
-<div class="visaCounsellor-content-inner d-flex">
-    <div class="col-3">
+<div class="visacounsellor-content-inner d-flex">
+    <div class="visa-menu">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link" ng-class="{active:isActive('step1')}" id="expertise-tab" aria-selected="true">Expertise</a>
             <a class="nav-link" ng-class="{active:isActive('step2')}" id="training-tab" aria-selected="false">Training</a>
@@ -12,7 +12,7 @@
 
         </div>
     </div>
-    <div class="col-9">
+    <div class="visa-content-right">
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade" ng-class="{active:isActive('step1'),show:isActive('step1')}" id="expertise-tab" role="tabpanel">
                 <div ng-include="'views/admin/visa_counsellor/expertise.html'"></div>

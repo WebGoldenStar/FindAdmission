@@ -34,9 +34,22 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         cropWidth: $scope.rectangleWidth,
         cropHeight: $scope.rectangleHeight
     };
-    $http.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    $http.get(BASE_URL + "/api/user").then(response => {
+    $http.post(WSURL + 'partnerapi/api/type/login/page/appcheck').then(function(response) {
+        $scope.monthlist = response.month;
+        $scope.yearlist = response.year;
+        $scope.daylist = response.day;
+        // console.log(response);
+        $scope.countrylist = response.data.country;
+        $scope.countryids = response.countryids;
+        $scope.dialingcodes = response.dialingcodes;
+        $scope.uniquecode = response.uniquecode;
+
+    });
+
+    // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+    $http.get(BASE_URL + "/api/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
 
         if (response.data.user.specialise_countries) {
             $scope.specialiseCountries = JSON.parse(response.data.user.specialise_countries);
@@ -52,7 +65,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             $scope.speakLanguages = JSON.parse(response.data.user.speak_languages);
         $scope.profileTitle = response.data.user.profile_title;
         $scope.profileOverview = response.data.user.profile_overview;
-        var profile__image = BASE_URL + "/public/" + response.data.user.profile_image;
+        var profile__image = BASE_URL + "/public" + response.data.user.profile_image;
         $scope.profileImage = profile__image;
         $scope.previewImage = profile__image;
         $scope.phoneVerificationNumber = response.data.user.phone_verification_number;
@@ -121,7 +134,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             url: BASE_URL + '/api/updateProfileImage',
             data: formData,
             headers: {
-                'Content-Type': undefined
+                'Content-Type': undefined,
+                'Authorization': `bearer ${token}`
             }
         };
         $http(request)
@@ -134,27 +148,24 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             });
 
     }
-
-
     $scope.onFileChange = function(event) {
-            if (event.target.files && event.target.files[0]) {
-                var reader = new FileReader();
+        if (event.target.files && event.target.files[0]) {
+            var reader = new FileReader();
 
-                reader.onload = function(e) {
+            reader.onload = function(e) {
+                $scope.previewImage = e.target.result;
+                $scope.$apply(function() {
                     $scope.previewImage = e.target.result;
-                    $scope.$apply(function() {
-                        $scope.previewImage = e.target.result;
-                    })
-                }
-
-                reader.readAsDataURL(event.target.files[0]);
-                $scope.previewImageFile = event.target.files[0];
-
+                })
             }
 
+            reader.readAsDataURL(event.target.files[0]);
+            $scope.previewImageFile = event.target.files[0];
 
         }
-        // $timeout(function() { angular.element(document.querySelector('#fileInput')).on('change', onFileChange); }, 1000, false);
+
+
+    }
     $scope.goTrainingTab = function(experienceLevel) {
         $scope.error = "";
         $scope.experienceLevel = experienceLevel;
@@ -164,7 +175,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'experienceLevelCountry': $scope.experienceLevel
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateExpertise", data).then(function(response) {
+        $http.post(BASE_URL + "/api/updateExpertise", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.step = "step2";
 
@@ -188,7 +199,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'trainingTo': trainingTo
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateTraining", data).then(function(response) {
+        $http.post(BASE_URL + "/api/updateTraining", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.step = "step3";
 
@@ -204,7 +215,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateLanguages", data).then(function(response) {
+        $http.post(BASE_URL + "/api/updateLanguages", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.step = "step4";
 
@@ -221,7 +232,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateFees", data).then(function(response) {
+        $http.post(BASE_URL + "/api/updateFees", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.step = "step5";
 
@@ -240,7 +251,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateProfile", data).then(function(response) {
+        $http.post(BASE_URL + "/api/updateProfile", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.step = "step6";
             }
@@ -252,15 +263,18 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         $scope.step = "step7";
 
     }
-    $scope.sendVerificationCode = function(phoneNumber) {
+    $scope.sendVerificationCode = function(dialingCode, phoneNumber) {
         $scope.error = "";
         $scope.phoneNumber = phoneNumber;
+        $scope.dialingCode = dialingCode;
+        $scope.phonenum = "+" + dialingCode.toString() + " " + phoneNumber.toString();
+        console.log($scope.phonenum);
         var data = {
             'userId': readCookie('userId'),
-            'phoneVerificationNumber': phoneNumber,
+            'phoneVerificationNumber': $scope.phonenum,
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/sendVerificationCode", data).then(function(response) {
+        $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 console.log(response);
                 $scope.step = "step8";
@@ -278,7 +292,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'phoneVerificationNumber': $scope.phoneNumber,
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/sendVerificationCode", data).then(function(response) {
+        $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.msg = "Sent verification number again";
                 console.log(response);
@@ -295,7 +309,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'verificationCode': digitalCode
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/checkVerificationCode", data).then(function(response) {
+        $http.post(BASE_URL + "/api/checkVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 console.log(response);
                 $location.path('/admin/visa_counsellor_profile');
@@ -310,6 +324,5 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
     $scope.goProfile = function() {
         $location.path('/admin/visa_counsellor_profile');
     }
-
 
 }]);

@@ -13,8 +13,8 @@ app.controller('loginController', ["$scope", "$http", "$location", "$interval", 
                 console.log(response);
                 const token = response.data.token;
 
-                $http.defaults.headers.common.Authorization = `Bearer ${token}`;
-                $http.get(BASE_URL + "/api/user").then(response => {
+                // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
+                $http.get(BASE_URL + "/api/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
                     var lifetime = 999999999;
                     createCookie("lifetime", lifetime, lifetime);
                     createCookie("loggedin", true, lifetime);

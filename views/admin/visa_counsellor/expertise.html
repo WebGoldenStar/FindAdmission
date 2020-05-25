@@ -4,58 +4,61 @@
     </div>
     <div class="visa-body">
         <h2>Tell us the countries your specialise on</h2>
-        <div class="d-flex" style="flex-direction:row;justify-content: space-between;">
-            <div class="dropdown">
-                <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        <div class="expertise-country-content">
+            <div class="d-flex expertise-country-list">
+                <div class="dropdown">
+                    <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                     European Countries
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(15px, 43px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" ng-repeat="country in europeanCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+                        <a class="dropdown-item" ng-repeat="country in europeanCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                    <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                     Asian Countires
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(15px, 43px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" ng-repeat="country in asiaCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+                        <a class="dropdown-item" ng-repeat="country in asiaCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    </div>
                 </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                <div class="dropdown">
+                    <button class="btn btn-flat btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                     American Countries
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(15px, 43px, 0px); top: 0px; left: 0px; will-change: transform;">
-                    <a class="dropdown-item" ng-repeat="country in americaCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start">
+                        <a class="dropdown-item" ng-repeat="country in americaCountries" ng-click="addSpecialiseCountry(country)">{{country}}</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <div class="d-flex flex-wrap">
-            <div ng-repeat="country in specialiseCountries track by $index" class="grid-col d-flex justify-content-between" style="width:31%;margin:5px">
-                <h4>{{country}}</h4>
-                <button type="button" ng-click="removeSpecialiseCountry(country)" class="close" aria-label="Close">
+            <br>
+            <div class="expertise-countries">
+                <div ng-repeat="country in specialiseCountries track by $index" class="grid-col d-flex justify-content-between expertise-country-item">
+                    <h4>{{country}}</h4>
+                    <button type="button" ng-click="removeSpecialiseCountry(country)" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
+                </div>
             </div>
         </div>
         <br>
         <h2>What is your level of experience in this countries?</h2>
         <br>
-        <div class="d-flex">
-            <a class="list-group-item list-group-item-action flex-column align-items-start text-center m-3" ng-click="experienceLevel = 'Entry'" ng-class="(experienceLevel==='Entry')?'active':''">
+        <div class="country-experience">
+            <a class="list-group-item list-group-item-action flex-column align-items-start text-center " ng-click="experienceLevel = 'Entry'" ng-class="(experienceLevel==='Entry')?'active':''">
                 <h5 class="mb-1">Entry Level</h5>
                 <p class="mb-1">I am relatively new to this field</p>
             </a>
-            <a class="list-group-item list-group-item-action flex-column align-items-start text-center m-3" ng-click="experienceLevel = 'Intermediate'" ng-class="(experienceLevel==='Intermediate')?'active':''">
+            <a class="list-group-item list-group-item-action flex-column align-items-start text-center " ng-click="experienceLevel = 'Intermediate'" ng-class="(experienceLevel==='Intermediate')?'active':''">
                 <h5 class="mb-1">Intermediate</h5>
                 <p class="mb-1">I have substantial experience in the field</p>
             </a>
-            <a class="list-group-item list-group-item-action flex-column align-items-start text-center m-3" ng-click="experienceLevel = 'Expert'" ng-class="(experienceLevel==='Expert')?'active':''">
+            <a class="list-group-item list-group-item-action flex-column align-items-start text-center " ng-click="experienceLevel = 'Expert'" ng-class="(experienceLevel==='Expert')?'active':''">
                 <h5 class="mb-1">Expert</h5>
                 <p class="mb-1">I have comprehensive and deep expertise in this field</p>
             </a>
         </div>
+        <br>
         <div class="d-flex justify-content-end"><button type="button" class="btn btn-success btn-lg mb-3" ng-click="goTrainingTab(experienceLevel)">Next</button></div>
     </div>
 </div>

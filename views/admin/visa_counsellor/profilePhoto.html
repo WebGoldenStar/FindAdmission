@@ -5,8 +5,8 @@
     <div class="visa-body">
         <p class="mb-3">Please upload a professional portrait that clearly shows your face</p>
         <br>
-        <div class="d-flex justify-content-between mb-3">
-            <div class="w-25 ml-5 d-flex flex-column align-items-center">
+        <div class="profile">
+            <div class="profile-left">
                 <img src="{{profileImage}}" width="100px" height="100px" alt="Avatar" class="profile-img" id="profile-image" style="height: 100px;">
                 <br>
                 <button type="button" class="btn btn-outline-success mb-3" data-toggle="modal" data-target="#exampleModalCenter">Add Profile Photo</button>
@@ -47,7 +47,7 @@
                 </div>
                 <a class="skip_step" ng-click="setStep('step7')" style="cursor: pointer;">Skip this step for now</a>
             </div>
-            <div class="w-50">
+            <div class="profile-right">
                 <p>Profile Photo guidelines:</p>
                 <span><li>Professional-looking</li></span>
                 <span><li>Crisp resolution</li></span>

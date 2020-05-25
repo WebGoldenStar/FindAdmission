@@ -6,9 +6,22 @@
         <h2>Add your phone number for verification purposes</h2>
         <br>
         <div ng-hide="phoneVerifiedAt">
-            <div class="form-group overview">
+            <!-- <div class="form-group overview">
                 <label for="phoneNumber">Phone number</label>
-                <input type="tel" class="form-control" id="phoneNumber" aria-describedby="emailHelp" ng-model="phoneNumber">
+                <input type="tel" class="form-control" id="phoneNumber" aria-describedby="emailHelp" ng-model="phoneNumber" placeholder="+1 914 972 5022">
+            </div> -->
+            <div class="form-group">
+                <label>Phone Number</label>
+                <div class="d-flex">
+                    <div class="w-25 mr-2">
+                        <select class="custom-select" ng-model="dialingcode" ng-options="monthlistb.country_dialingcode as (monthlistb.dlkey) for monthlistb in countrylist">
+                        <option value="">Select</option>
+                    </select>
+                    </div>
+                    <div class="w-75">
+                        <input type="number" name="phone" placeholder="Phone Number" ng-model="phoneNumber" class="form-control" id="phone" />
+                    </div>
+                </div>
             </div>
             <p>You will receive a text message with a verfication code you can enter on the next step. Messaging rates may apply. Your phone number will not be shared with clients</p>
             <div class="alert alert-danger" role="alert" ng-show="msg">
@@ -17,8 +30,8 @@
 
             <br>
             <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary btn-lg" ng-click="setStep('step6')">Back</button>
-                <button type="button" class="btn btn-success btn-lg" ng-click="sendVerificationCode(phoneNumber)">Next</button>
+                <button type="button" class="btn btn-secondary btn-lg" ng-click="goProfile()">Skip</button>
+                <button type="button" class="btn btn-success btn-lg" ng-click="sendVerificationCode(dialingcode,phoneNumber)">Next</button>
             </div>
 
         </div>

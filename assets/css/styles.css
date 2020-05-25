@@ -98,11 +98,6 @@
     padding: 50px 250px;
 }
 
-.visaCounsellor-content-inner {
-    /* margin: auto; */
-    padding: 50px 150px;
-}
-
 
 /*------------------------- END Core Css -------------------*/
 
@@ -764,7 +759,7 @@ ul.breadcrumbs {
     margin-left: 20px;
 }
 
-.dashboard img.avatar {
+.dashboard-welcome img.avatar {
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -939,7 +934,7 @@ ul.breadcrumbs {
 }
 
 .custom-select {
-    height: calc(2.25rem + 8px)!important;
+    height: calc(2.25rem + 14px)!important;
 }
 
 .border-0 {
@@ -1960,12 +1955,6 @@ p.card-text {
 
 /*-------------------- 14. List Group ------------------- */
 
-.list-group-item {
-    color: #444;
-    font-size: 13px;
-    border: 2px lightgray solid;
-}
-
 .media-body {
     font-size: 13px;
     line-height: 27px;
@@ -2966,6 +2955,10 @@ table.dataTable thead td {
     font-size: 18px;
 }
 
+.dashboard-item-grid {
+    width: 50%;
+}
+
 @media (min-width: 576px) {
     .modal-dialog {
         max-width: 700px!important;
@@ -3169,6 +3162,217 @@ img-crop .loading {
     color: white;
     background-color: rgba(0, 0, 0, 0.75);
     position: absolute;
+}
+
+
+/* Mobile Responsive */
+
+.dashboard {
+    display: flex;
+    margin-top: 30px;
+}
+
+.introduction-modal {
+    display: block;
+    padding: 17px;
+    overflow: scroll;
+}
+
+.introduction-modal-body-content {
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.introduction-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.visacounsellor-content-inner {
+    /* margin: auto; */
+    padding: 50px 150px;
+}
+
+.visa-menu {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.visa-content-right {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+.expertise-country-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.expertise-country-list {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.expertise-countries {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.expertise-country-item {
+    width: 31%;
+    margin: 5px
+}
+
+.country-experience {
+    display: flex;
+}
+
+.list-group-item {
+    color: #444;
+    font-size: 13px;
+    border: 2px lightgray solid;
+    margin: 20px!important;
+}
+
+.drop-down-menu {
+    position: absolute;
+    transform: translate3d(15px, 43px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    /* d-flex justify-content-between mb-3  */
+}
+
+.profile-left {
+    width: 25%;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* w-25 ml-5 d-flex flex-column align-items-center */
+}
+
+.profile-right {
+    width: 50%;
+}
+
+@media (max-width:576px) {
+    .dashboard-item-grid {
+        width: 100%;
+    }
+    .dashboard-item {
+        padding: 5px 20px 5px 20px;
+    }
+    .dashboard {
+        display: flex;
+        margin-top: 30px;
+        flex-direction: column;
+    }
+    .introduction-modal-body-content {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .introduction-footer {
+        display: flex;
+        flex-direction: column;
+    }
+    .visacounsellor-content-inner {
+        /* margin: auto; */
+        padding: 0px 0px;
+    }
+    .visa-menu {
+        display: none;
+    }
+    .visa-content-right {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .expertise-country-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .expertise-country-list {
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+    }
+    .expertise-countries {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .expertise-country-item {
+        width: 45%;
+        margin: 5px
+    }
+    .expertise-country-list .dropdown {
+        margin-bottom: 5px;
+    }
+    .expertise-country-list .dropdown button {
+        width: 100%;
+    }
+    .country-experience {
+        display: inline-block;
+    }
+    .list-group-item {
+        color: #444;
+        font-size: 13px;
+        border: 2px lightgray solid;
+        margin: 2px!important;
+    }
+    .visa-body h2 {
+        font-size: 20px;
+    }
+    .visa-body h4 {
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .feesTab {
+        padding: 0px;
+    }
+    .input-group {
+        width: 50%;
+        margin-left: 1rem;
+    }
+    .dropdown-menu {
+        top: 0px;
+        right: 0px;
+    }
+    .visa-body {
+        padding: 10px
+    }
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        /* d-flex justify-content-between mb-3  */
+    }
+    .profile-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-left: 0px;
+        /* w-25 ml-5 d-flex flex-column align-items-center */
+    }
+    .profile-right {
+        width: 100%;
+        padding: 25px;
+    }
+    .page-title-area {
+        padding: 0px!important;
+    }
+    .user-profile {
+        margin: 0px!important;
+        flex-wrap: nowrap;
+    }
 }
 
 
