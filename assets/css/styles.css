@@ -699,6 +699,7 @@
     color: #fff;
     letter-spacing: 0;
     margin-right: 30px;
+    margin-left: 20px;
 }
 
 ul.breadcrumbs {
@@ -1853,7 +1854,7 @@ table.dbkit-table tr td {
 
 .btn {
     padding: 11px 17px;
-    font-size: 13px;
+    font-size: 18px;
     letter-spacing: 0;
 }
 
@@ -1862,7 +1863,7 @@ table.dbkit-table tr td {
 }
 
 .btn-lg {
-    padding: 15px 22px;
+    padding: 13px 59px;
 }
 
 .btn-md {
@@ -1878,11 +1879,10 @@ table.dbkit-table tr td {
 }
 
 .nav-pills .nav-link {
-    padding: 16px 48px;
-    padding: 0.5rem 0.5rem;
+    padding: 10px 20px 10px 10px!important;
     line-height: 19px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 21px;
+    font-weight: 600;
     border-radius: 0px;
 }
 
@@ -1963,6 +1963,7 @@ p.card-text {
 .list-group-item {
     color: #444;
     font-size: 13px;
+    border: 2px lightgray solid;
 }
 
 .media-body {
@@ -3015,28 +3016,159 @@ table.dataTable thead td {
 
 .visa-container {
     border-width: 2px;
-    border-color: black;
+    border-color: gray;
     border-style: solid;
 }
 
 .visa-header {
     border-width: 1px;
-    border-color: black;
+    border-color: gray;
     border-style: solid;
-    padding: 20px;
+    padding: 30px;
     background-color: lightgray;
 }
 
 .visa-body {
-    padding: 20px;
+    padding: 30px;
 }
 
 .visa-body h5 {
     font-weight: 700;
 }
 
+.visa-body h4 {
+    font-weight: 600;
+    font-size: 18px
+}
+
 .visa-header h3 {
     font-weight: 600;
+}
+
+.visa-body p {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.visa-body h2 {
+    border-bottom: 2px #28a745 solid;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px
+}
+
+.list-group-item.active {
+    background-color: white;
+    border: 1px #28a745 solid!important;
+    border-bottom: 5px #28a745 solid!important;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.25rem + 17px);
+}
+
+.form-control {
+    font-size: 18px;
+    border: 1px solid rgba(170, 170, 170, .3);
+    padding: 10.72px 12.8px;
+    padding: .67rem .8rem;
+}
+
+.input-group-text {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.input-group>.custom-file,
+.input-group>.custom-select,
+.input-group>.form-control {
+    font-weight: 600;
+}
+
+.overview label {
+    font-size: 16px!important;
+    font-weight: 800;
+}
+
+.visa-body .skip_step {
+    font-size: 16px;
+    font-weight: 600;
+    color: #28a745!important;
+    text-decoration: underline!important;
+}
+
+.profile-img {
+    border-radius: 50%;
+}
+
+.edit-profile .modal-content {
+    padding: 0px!important;
+}
+
+.edit-profile .modal-body {
+    padding: 0px!important;
+}
+
+.feesTab {
+    padding-left: 50px;
+    padding-right: 70px;
+}
+
+.cropArea {
+    background: lightgray;
+    overflow: hidden;
+    width: 350px;
+    height: 350px;
+}
+
+
+/* line 1, ../../source/scss/ng-img-crop.scss */
+
+img-crop {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* line 7, ../../source/scss/ng-img-crop.scss */
+
+img-crop canvas {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    /* mobile webkit */
+}
+
+
+/* line 17, ../../source/scss/ng-img-crop.scss */
+
+img-crop .loading {
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.75);
+    position: absolute;
 }
 
 

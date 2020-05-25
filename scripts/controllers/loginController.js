@@ -19,12 +19,12 @@ app.controller('loginController', ["$scope", "$http", "$location", "$interval", 
                     createCookie("lifetime", lifetime, lifetime);
                     createCookie("loggedin", true, lifetime);
                     createCookie("access_token", token, lifetime);
-                    createCookie("user", response.data.user, lifetime);
                     createCookie("fname", response.data.user.firstname, lifetime);
                     createCookie("lname", response.data.user.lastname, lifetime);
                     createCookie("email", response.data.user.email, lifetime);
+                    createCookie("userId", response.data.user.id, lifetime);
+                    // $location.path('home.login');
                     $location.path('admin');
-                    // $location.path('admin');                    
                     // document.location.href = "/FindAdmission/dashboard";
                 });
 

@@ -1,0 +1,36 @@
+<div class="visa-container">
+    <div class="visa-header">
+        <h3>Your Location</h3>
+    </div>
+    <div class="visa-body">
+        <h2>Add your phone number for verification purposes</h2>
+        <br>
+        <div ng-hide="phoneVerifiedAt">
+            <div class="form-group overview">
+                <label for="phoneNumber">Phone number</label>
+                <input type="tel" class="form-control" id="phoneNumber" aria-describedby="emailHelp" ng-model="phoneNumber">
+            </div>
+            <p>You will receive a text message with a verfication code you can enter on the next step. Messaging rates may apply. Your phone number will not be shared with clients</p>
+            <div class="alert alert-danger" role="alert" ng-show="msg">
+                <strong>{{msg}}</strong>
+            </div>
+
+            <br>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary btn-lg" ng-click="setStep('step6')">Back</button>
+                <button type="button" class="btn btn-success btn-lg" ng-click="sendVerificationCode(phoneNumber)">Next</button>
+            </div>
+
+        </div>
+        <div ng-show="phoneVerifiedAt">
+            <div class="alert alert-success" role="alert">
+                <strong>You already verified phone number with {{phoneVerificationNumber}}</strong>
+
+            </div>
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary btn-lg" ng-click="verificationAgain()">Again ?</button>
+                <button type="button" class="btn btn-success btn-lg" ng-click="goProfile()">Skip</button>
+            </div>
+        </div>
+    </div>
+</div>

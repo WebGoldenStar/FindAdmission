@@ -1,0 +1,53 @@
+<div class="visa-container">
+    <div class="visa-header">
+        <h3>Fees and Rate</h3>
+    </div>
+    <div class="visa-body">
+        <p>Client will se this rate on your profile and in search results once you publish your profile. You can adjust your rate every time you submit a proposal</p>
+        <br>
+        <div class="feesTab">
+            <div class="d-flex justify-content-between align-items-center p-4" style="border-bottom: 2px lightgray solid;">
+                <div class="w-50">
+                    <h4>Total Fee</h4>
+                    <span>Total amount the client will see</span>
+                </div>
+                <div class="input-group w-25 mr-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" max="150" ng-model="totalFee" placeholder="0.00 - 150.00">
+                </div>
+                <!-- <h4 class="mr-5">Max-$150</h4> -->
+            </div>
+            <div class="d-flex justify-content-between align-items-center p-4">
+                <div class="w-50">
+                    <h4>Findadmission Service Fee</h4>
+                    <span>Findadmission Service Fee is 20% when we refer student to you and you delivered the service requried</span>
+                </div>
+                <div class="input-group w-25 mr-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" max="150" value="{{totalFee*0.2}}" disabled>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center p-4">
+                <div class="w-50">
+                    <h4>You'll receive</h4>
+                    <span>Excluding the bank charges this s the estimated amount you'll receive after service fees</span>
+                </div>
+                <div class="input-group w-25 mr-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" max="150" value="{{totalFee-totalFee*0.2}}" disabled>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary btn-lg" ng-click="setStep('step5')">Skip this for now</button>
+            <button type="button" class="btn btn-success btn-lg" ng-click="goOverviewTab(totalFee)">Next</button>
+        </div>
+    </div>
+</div>

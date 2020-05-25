@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", 'route-segment', 'view-segment']);
+var app = angular.module("myApp", ["ngRoute", 'route-segment', 'view-segment', 'ngImgCrop']);
 var WSURL = "https://api.findadmission.com/";
 app.config(function($routeSegmentProvider) {
     $routeSegmentProvider.
@@ -9,7 +9,8 @@ app.config(function($routeSegmentProvider) {
 
     when('/admin', 'admin').
     when('/admin/dashboard', 'admin.dashboard').
-    when('/admin/visa_counsellor', 'admin.visa_counsellor');
+    when('/admin/visa_counsellor', 'admin.visa_counsellor').
+    when('/admin/visa_counsellor_profile', 'admin.visa_counsellor_profile');
 
     $routeSegmentProvider.segment('home', {
         default: true,
@@ -35,4 +36,29 @@ app.config(function($routeSegmentProvider) {
         templateUrl: 'views/admin/visa_counsellor.html',
         controller: 'visaCounsellorController'
     });
+    $routeSegmentProvider.within('admin').segment('visa_counsellor_profile', {
+        templateUrl: 'views/admin/visa_counsellor_profile.html',
+        controller: 'visaCounsellorProfileController'
+    });
 });
+
+app.directive('customOnChange', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var onChangeHandler = scope.$eval(attrs.customOnChange);
+            element.on('change', onChangeHandler);
+            element.on('$destroy', function() {
+                element.off();
+            });
+
+        }
+    };
+});
+app.directive('dateNow', ['$filter', function($filter) {
+    return {
+        link: function($scope, $element, $attrs) {
+            $element.text($filter('date')(new Date(), $attrs.dateNow));
+        }
+    };
+}])

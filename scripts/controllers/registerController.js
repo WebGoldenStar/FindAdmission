@@ -144,11 +144,19 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
             };
             console.log("Post Data: ", post_data);
             $http.post(BASE_URL + '/api/register', post_data).then(function(response) {
-                if (response.status == "success") {
-                    alert(response);
+                console.log(response);
+
+                if (response.status === 201) {
+                    var lifetime = 999999999;
+                    createCookie("lifetime", lifetime, lifetime);
+                    createCookie("loggedin", true, lifetime);
+                    createCookie("access_token", response.data.token, lifetime);
+                    createCookie("fname", response.data.user.firstname, lifetime);
+                    createCookie("lname", response.data.user.lastname, lifetime);
+                    createCookie("email", response.data.user.email, lifetime);
+                    createCookie("userId", response.data.user.id, lifetime);
+                    $location.path('admin');
                 }
-
-
             })
 
         }

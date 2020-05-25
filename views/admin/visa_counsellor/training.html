@@ -1,0 +1,25 @@
+<div class="visa-container">
+    <div class="visa-header">
+        <h3>Training</h3>
+    </div>
+    <div class="visa-body">
+        <h2>Have you received any qualification for visa counselling?</h2>
+        <br>
+        <div class="form-group">
+            <label for="example-month-input" class="col-form-label">Dates Attended (Optional)</label>
+            <div class="d-flex">
+                <input class="form-control col mr-3" type="number" value="From" id="start-Date" ng-model="trainingFrom" placeholder="From">
+                <input class="form-control col" type="number" value="From" id="endDate" ng-model="trainingTo" placeholder="To (or expected graduation year)">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description (Optional)</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Describe the training you received and from which organisation e.t.c" ng-model="trainingDescription"></textarea>
+        </div>
+        <br>
+        <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-secondary btn-lg" ng-click="setStep('step3')">I don't have</button>
+            <button type="button" class="btn btn-success btn-lg" ng-click="goLanguagesTab(trainingFrom, trainingTo, trainingDescription)">Next</button>
+        </div>
+    </div>
+</div>

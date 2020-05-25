@@ -1,0 +1,30 @@
+<div class="visaCounsellor-content-inner d-flex">
+    <div class="container">
+        <div class="d-flex mb-4">
+            <img src="{{profileImage}}" width="100px" height="100px" alt="Avatar" class="profile-img" id="profile-image" style="height: 100px;">
+            <div class="m-3">
+                <h2>{{user.fname}} {{user.lname}}</h2>
+                <h5>{{CurrentDate | date:'HH:mm'}} Local Time</h5>
+            </div>
+        </div>
+        <div class="mb-3">
+            <h6 class="mb-3">{{profileTitle}}</h6>
+            <p>{{profileOverview}}</p>
+        </div>
+        <div class="mb-5">
+            <h5>${{totalFee}}</h5>
+            <p>Total Fee</p>
+        </div>
+
+        <div>
+            <h4 class="mb-3">Speak Languages</h4>
+            <div class="row">
+                <div class="btn btn-success mb-3 col-md-3 mr-3" ng-repeat="language in speakLanguages track by $index">
+                    <h5>{{language.name}}</h5>
+                    <h5> - </h5>
+                    <h5>{{language.level}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
