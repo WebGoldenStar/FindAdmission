@@ -3373,6 +3373,12 @@ img-crop .loading {
         margin: 0px!important;
         flex-wrap: nowrap;
     }
+    .profile-title-name {
+        font-size: 20px;
+    }
+    .profile-title-time {
+        font-size: 14px
+    }
 }
 
 
