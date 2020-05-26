@@ -85,6 +85,11 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
     }
     $scope.setStep = function(step) {
         $scope.error = "";
+        var lastChar = step[step.length - 1];
+        var percent = (Number(lastChar) - 1) * 13
+        console.log(percent);
+        document.getElementById('progressStatus').style.width = `${percent}%`;
+
         $scope.step = step;
         console.log("-------Current Step-----------------", $scope.step);
         console.log("-------Language Level-----------------", $scope.speakLanguages);
@@ -177,6 +182,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/updateExpertise", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "13%";
+
                 $scope.step = "step2";
 
                 console.log(response);
@@ -201,6 +208,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/updateTraining", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "26%";
+
                 $scope.step = "step3";
 
                 console.log(response);
@@ -217,6 +226,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/updateLanguages", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "39%";
+
                 $scope.step = "step4";
 
                 console.log(response);
@@ -234,6 +245,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/updateFees", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "52%";
+
                 $scope.step = "step5";
 
                 console.log(response);
@@ -253,11 +266,14 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/updateProfile", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "65%";
+
                 $scope.step = "step6";
             }
         });
     }
     $scope.goLocationTab = function() {
+        document.getElementById('progressStatus').style.width = "77%";
         $scope.error = "";
 
         $scope.step = "step7";
@@ -276,6 +292,8 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         console.log(data);
         $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
+                document.getElementById('progressStatus').style.width = "89%";
+
                 console.log(response);
                 $scope.step = "step8";
             }
@@ -289,7 +307,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         var data = {
             'userId': readCookie('userId'),
-            'phoneVerificationNumber': $scope.phoneNumber,
+            'phoneVerificationNumber': $scope.phonenum,
         };
         console.log(data);
         $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
@@ -305,7 +323,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         $scope.error = "";
         var data = {
             'userId': readCookie('userId'),
-            'phoneVerificationNumber': $scope.phoneNumber,
+            'phoneVerificationNumber': $scope.phonenum,
             'verificationCode': digitalCode
         };
         console.log(data);
@@ -322,7 +340,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
         $scope.phoneVerifiedAt = "";
     }
     $scope.goProfile = function() {
+        document.getElementById('progressStatus').style.width = "100%";
         $location.path('/admin/visa_counsellor_profile');
     }
-
 }]);

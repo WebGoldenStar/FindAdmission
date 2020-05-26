@@ -1,6 +1,7 @@
 <div class="visa-container">
-    <div class="visa-header">
-        <h3>Your Location</h3>
+    <div class="visa-header d-flex">
+        <span class="ti-arrow-left" ng-click="setStep('step6')"></span>
+        <h3 class="ml-3">Your Location</h3>
     </div>
     <div class="visa-body">
         <h2>Add your phone number for verification purposes</h2>
@@ -19,7 +20,7 @@
                     </select>
                     </div>
                     <div class="w-75">
-                        <input type="number" name="phone" placeholder="Phone Number" ng-model="phoneNumber" class="form-control" id="phone" />
+                        <input type="tel" name="phone" placeholder="425 625 6378" ng-model="phoneNumber" class="form-control" id="phone" />
                     </div>
                 </div>
             </div>
