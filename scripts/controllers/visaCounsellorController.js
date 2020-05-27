@@ -49,7 +49,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
     // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    $http.get(BASE_URL + "/api/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
+    $http.get(BASE_URL + "/api/visa/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
 
         if (response.data.user.specialise_countries) {
             $scope.specialiseCountries = JSON.parse(response.data.user.specialise_countries);
@@ -136,7 +136,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         var request = {
             method: 'POST',
-            url: BASE_URL + '/api/updateProfileImage',
+            url: BASE_URL + '/api/visa/updateProfileImage',
             data: formData,
             headers: {
                 'Content-Type': undefined,
@@ -180,7 +180,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'experienceLevelCountry': $scope.experienceLevel
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateExpertise", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/updateExpertise", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "13%";
 
@@ -206,7 +206,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'trainingTo': trainingTo
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateTraining", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/updateTraining", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "26%";
 
@@ -224,7 +224,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateLanguages", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/updateLanguages", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "39%";
 
@@ -243,7 +243,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateFees", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/updateFees", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "52%";
 
@@ -264,7 +264,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
 
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/updateProfile", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/updateProfile", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "65%";
 
@@ -290,7 +290,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'phoneVerificationNumber': $scope.phonenum,
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 document.getElementById('progressStatus').style.width = "89%";
 
@@ -310,7 +310,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'phoneVerificationNumber': $scope.phonenum,
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/sendVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 $scope.msg = "Sent verification number again";
                 console.log(response);
@@ -327,7 +327,7 @@ app.controller('visaCounsellorController', ['$scope', '$location', '$http', '$ti
             'verificationCode': digitalCode
         };
         console.log(data);
-        $http.post(BASE_URL + "/api/checkVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
+        $http.post(BASE_URL + "/api/visa/checkVerificationCode", data, { headers: { 'Authorization': `Bearer ${token}` } }).then(function(response) {
             if (response.status === 200) {
                 console.log(response);
                 $location.path('/admin/visa_counsellor_profile');

@@ -143,7 +143,7 @@ app.controller('registerController', ["$scope", "$http", "$location", "$interval
                 'companyname': $scope.vcompanyname,
             };
             console.log("Post Data: ", post_data);
-            $http.post(BASE_URL + '/api/register', post_data).then(function(response) {
+            $http.post(BASE_URL + '/api/visa/register', post_data).then(function(response) {
                 console.log(response);
 
                 if (response.status === 201) {

@@ -8,7 +8,7 @@ app.controller('visaCounsellorProfileController', ['$scope', '$location', '$http
     $scope.CurrentDate = new Date();
     // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    $http.get(BASE_URL + "/api/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
+    $http.get(BASE_URL + "/api/visa/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
         $scope.specialiseCountries = JSON.parse(response.data.user.specialise_countries);
         $scope.experienceLevel = response.data.user.countries_level;
         $scope.trainingFrom = Number(response.data.user.training_from);
