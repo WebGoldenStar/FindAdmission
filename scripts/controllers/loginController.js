@@ -8,13 +8,13 @@ app.controller('loginController', ["$scope", "$http", "$location", "$interval", 
             'check2': false,
         };
 
-        $http.post(BASE_URL + "/api/visa/login", data).then(function(response) {
+        $http.post(BASE_URL + "/api/visacounsellor/login", data).then(function(response) {
             if (response.status === 200) {
                 console.log(response);
                 const token = response.data.token;
 
                 // $http.defaults.headers.common.Authorization = `Bearer ${token}`;
-                $http.get(BASE_URL + "/api/visa/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
+                $http.get(BASE_URL + "/api/visacounsellor/user", { headers: { 'Authorization': `Bearer ${token}` } }).then(response => {
                     var lifetime = 999999999;
                     createCookie("lifetime", lifetime, lifetime);
                     createCookie("loggedin", true, lifetime);
